@@ -1,0 +1,12 @@
+# Java / Maven
+backend/target/
+
+# Angular (ใช้ในขั้นที่ 5)
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+
+# IDE / OS
+.idea/
+*.iml
+.DS_Store
