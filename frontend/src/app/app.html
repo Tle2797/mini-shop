@@ -1,0 +1,22 @@
+<main class="min-h-screen flex items-center justify-center p-6">
+  <div class="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg">
+    <h1 class="text-3xl font-bold text-indigo-600">{{ title() }}</h1>
+    <p class="mt-2 text-slate-500">Angular + Tailwind CSS v4 พร้อมใช้งาน 🎉</p>
+
+    <div class="mt-6 rounded-lg bg-slate-50 p-4 text-sm">
+      <span class="font-semibold">API URL:</span>
+      <code class="ml-1 text-pink-600">{{ apiUrl }}</code>
+    </div>
+
+    <button
+      type="button"
+      (click)="increase()"
+      class="mt-6 w-full rounded-lg bg-indigo-600 px-4 py-2 font-medium text-white
+             transition hover:bg-indigo-700 active:scale-95"
+    >
+      กดแล้ว {{ clicks() }} ครั้ง
+    </button>
+  </div>
+</main>
+
+<router-outlet />
