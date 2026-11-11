@@ -1,8 +1,24 @@
+
 @import "tailwindcss";
 
-/* ===== ค่าตั้งต้นของทั้งแอป ===== */
-@layer base {
-  html, body {
-    @apply bg-slate-100 text-slate-800 antialiased;
+/* ===== คลาสที่ใช้ซ้ำ ===== */
+@layer components {
+  .form-label {
+    @apply block text-sm font-medium text-slate-700;
+  }
+  .form-input {
+    @apply mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm
+           outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200;
+  }
+  .form-error {
+    @apply mt-1 text-xs text-red-600;
+  }
+  .btn-primary {
+    @apply inline-flex w-full items-center justify-center rounded-lg bg-indigo-600 px-4 py-2
+           text-sm font-medium text-white transition hover:bg-indigo-700
+           disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .alert-error {
+    @apply rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700;
   }
 }

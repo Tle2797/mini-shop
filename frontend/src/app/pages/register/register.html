@@ -1,0 +1,48 @@
+<main class="flex min-h-screen items-center justify-center p-6">
+  <div class="w-full max-w-sm rounded-2xl bg-white p-8 shadow-lg">
+    <h1 class="text-2xl font-bold text-slate-800">สมัครสมาชิก</h1>
+    <p class="mt-1 text-sm text-slate-500">Mini Shop</p>
+
+    @if (errorMessage()) {
+      <div class="alert-error mt-4">{{ errorMessage() }}</div>
+    }
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="mt-6 space-y-4" novalidate>
+      <div>
+        <label for="username" class="form-label">ชื่อผู้ใช้</label>
+        <input id="username" type="text" formControlName="username"
+               autocomplete="username" class="form-input" />
+        @let u = form.controls.username;
+        @if (u.touched && u.invalid) {
+          <p class="form-error">
+            @if (u.hasError('required')) { กรุณากรอกชื่อผู้ใช้ }
+            @else if (u.hasError('minlength') || u.hasError('maxlength')) { ชื่อผู้ใช้ต้องยาว 3-50 ตัวอักษร }
+            @else if (u.hasError('pattern')) { ใช้ได้เฉพาะ a-z, 0-9 และ _ }
+          </p>
+        }
+      </div>
+
+      <div>
+        <label for="password" class="form-label">รหัสผ่าน</label>
+        <input id="password" type="password" formControlName="password"
+               autocomplete="new-password" class="form-input" />
+        @let p = form.controls.password;
+        @if (p.touched && p.invalid) {
+          <p class="form-error">
+            @if (p.hasError('required')) { กรุณากรอกรหัสผ่าน }
+            @else { รหัสผ่านต้องยาว 6-72 ตัวอักษร }
+          </p>
+        }
+      </div>
+
+      <button type="submit" class="btn-primary" [disabled]="loading()">
+        {{ loading() ? 'กำลังสมัคร...' : 'สมัครสมาชิก' }}
+      </button>
+    </form>
+
+    <p class="mt-6 text-center text-sm text-slate-500">
+      มีบัญชีแล้ว?
+      <a routerLink="/login" class="font-medium text-indigo-600 hover:underline">เข้าสู่ระบบ</a>
+    </p>
+  </div>
+</main>

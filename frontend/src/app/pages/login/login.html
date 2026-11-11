@@ -1,0 +1,39 @@
+<main class="flex min-h-screen items-center justify-center p-6">
+  <div class="w-full max-w-sm rounded-2xl bg-white p-8 shadow-lg">
+    <h1 class="text-2xl font-bold text-slate-800">เข้าสู่ระบบ</h1>
+    <p class="mt-1 text-sm text-slate-500">Mini Shop</p>
+
+    @if (errorMessage()) {
+      <div class="alert-error mt-4">{{ errorMessage() }}</div>
+    }
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="mt-6 space-y-4" novalidate>
+      <div>
+        <label for="username" class="form-label">ชื่อผู้ใช้</label>
+        <input id="username" type="text" formControlName="username"
+               autocomplete="username" class="form-input" />
+        @if (form.controls.username.touched && form.controls.username.hasError('required')) {
+          <p class="form-error">กรุณากรอกชื่อผู้ใช้</p>
+        }
+      </div>
+
+      <div>
+        <label for="password" class="form-label">รหัสผ่าน</label>
+        <input id="password" type="password" formControlName="password"
+               autocomplete="current-password" class="form-input" />
+        @if (form.controls.password.touched && form.controls.password.hasError('required')) {
+          <p class="form-error">กรุณากรอกรหัสผ่าน</p>
+        }
+      </div>
+
+      <button type="submit" class="btn-primary" [disabled]="loading()">
+        {{ loading() ? 'กำลังเข้าสู่ระบบ...' : 'เข้าสู่ระบบ' }}
+      </button>
+    </form>
+
+    <p class="mt-6 text-center text-sm text-slate-500">
+      ยังไม่มีบัญชี?
+      <a routerLink="/register" class="font-medium text-indigo-600 hover:underline">สมัครสมาชิก</a>
+    </p>
+  </div>
+</main>

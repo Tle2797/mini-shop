@@ -1,0 +1,33 @@
+<div class="min-h-screen">
+  <header class="bg-white shadow-sm">
+    <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+      <h1 class="text-xl font-bold text-indigo-600">Mini Shop</h1>
+      <div class="flex items-center gap-4">
+        <span class="text-sm text-slate-600">👤 {{ auth.username() }}</span>
+        <button type="button" (click)="auth.logout()"
+                class="rounded-lg border border-slate-300 px-3 py-1.5 text-sm hover:bg-slate-50">
+          ออกจากระบบ
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-5xl p-6">
+    <h2 class="text-lg font-semibold">รายการสินค้า (ชั่วคราว)</h2>
+
+    @if (errorMessage()) {
+      <div class="alert-error mt-4">{{ errorMessage() }}</div>
+    }
+
+    <ul class="mt-4 divide-y rounded-lg bg-white shadow-sm">
+      @for (p of products(); track p.id) {
+        <li class="flex justify-between px-4 py-3">
+          <span>#{{ p.id }} {{ p.name }}</span>
+          <span class="font-medium">{{ p.price | number: '1.2-2' }} ฿</span>
+        </li>
+      } @empty {
+        <li class="px-4 py-3 text-slate-400">ไม่มีสินค้า</li>
+      }
+    </ul>
+  </main>
+</div>

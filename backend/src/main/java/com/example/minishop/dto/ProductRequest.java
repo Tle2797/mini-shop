@@ -22,7 +22,7 @@ public record ProductRequest (
 
     @NotNull (message = "กรุณากรอกราคา")
     @DecimalMin (value = "0.00", message = "ราคาต้องไม่ติดลบ")
-    @Digits (integer = 8, fraction = 2, message = "รานคาต้องมีทศนิยม")
+    @Digits (integer = 8, fraction = 2, message = "ราคาต้องไม่เกิน 8 หลัก และทศนิยมไม่เกิน 2 ตำแหน่ง")
     BigDecimal price,
 
     @NotNull (message = "กรุณากรอกจำนวนสต๊อก")
